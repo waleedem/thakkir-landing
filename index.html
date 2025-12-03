@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thakkir – Your Hifdh Partner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thakkir is a simple, structured Hifdh partner that helps you stay consistent with Quran memorisation." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --mint: #A8E6CE;
+      --charcoal: #333333;
+      --offwhite: #FDFDFD;
+      --warmgrey: #B0B3B8;
+      --gold: #D6CDA4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, var(--mint) 0, #ffffff 55%, #f7f7f7 100%);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(253, 253, 253, 0.96);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.06),
+        0 2px 8px rgba(0, 0, 0, 0.03);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 24px 20px;
+      }
+    }
+
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    /* NEW: LOGO IMAGE */
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px; /* change to 8px or 0 depending on your logo */
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(168, 230, 206, 0.22);
+      color: var(--charcoal);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #2ecc71;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--warmgrey);
+      margin-bottom: 22px;
+      max-width: 440px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--charcoal), #111111);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .cta-btn span {
+      margin-left: 8px;
+      font-size: 16px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #000000, var(--charcoal));
+    }
+
+    .feature-list {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 16px;
+      font-size: 13px;
+      color: var(--charcoal);
+    }
+
+    @media (max-width: 480px) {
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-item {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .feature-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      margin-top: 5px;
+      background: var(--mint);
+    }
+
+    .right-card {
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #ffffff 0, #f9fbfa 45%, #f2f5f4 100%);
+      border: 1px solid rgba(176, 179, 184, 0.35);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .mock-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .mock-pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(168, 230, 206, 0.3);
+    }
+
+    .progress-box {
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(51, 51, 51, 0.96);
+      color: #ffffff;
+      font-size: 12px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 10px;
+    }
+
+    .progress-main-label {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .progress-number {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .pill-stat {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .streak-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .streak-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f1c40f;
+    }
+
+    .days-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    .day {
+      flex: 1;
+      text-align: center;
+    }
+
+    .day span {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .day-bar {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .day-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--mint), var(--gold));
+    }
+
+    .day.muted .day-bar-fill {
+      opacity: 0.25;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(176, 179, 184, 0.4);
+    }
+
+    .footnote {
+      font-size: 11px;
+      color: var(--warmgrey);
+      margin-top: 2px;
+    }
+
+    .footer {
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--warmgrey);
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- LEFT -->
+    <section>
+      <div class="left-header">
+        <!-- NEW LOGO -->
+        <img src="logo.png" alt="Thakkir logo" class="logo-img">
+        <div class="brand-name">Thakkir</div>
+      </div>
+
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>Now on the App Store</span>
+      </div>
+
+      <h1>Stay consistent with your Hifdh.</h1>
+      <p class="subtitle">
+        Thakkir helps you build a steady Quran memorisation routine with clear goals, simple tracking, and gentle reminders.
+      </p>
+
+      <div class="cta-row">
+        <a class="cta-btn" href="https://apps.apple.com/app/id6747952106" target="_blank" rel="noopener">
+          Download on the App Store <span>↗</span>
+        </a>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>Set daily Hifdh goals that fit your pace.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>Track Surahs and Juz with a clean overview.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>Stay on track with smart reminders.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div>Use accountability to keep your routine alive.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: APP MOCK -->
+    <aside class="right-card" aria-hidden="true">
+      <div class="mock-header">
+        <div class="mock-title">Today’s Hifdh</div>
+        <div class="mock-pill">Day 24 · Active</div>
+      </div>
+
+      <div class="progress-box">
+        <div>
+          <div class="progress-main-label">This week</div>
+          <div class="progress-number">17</div>
+          <div class="pill-stat">Ayat logged</div>
+        </div>
+        <div>
+          <div class="streak-row">
+            <div class="streak-dot"></div>
+            <span>7-day streak</span>
+          </div>
+          <div class="days-row">
+            <div class="day">
+              <span>M</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day">
+              <span>T</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day">
+              <span>W</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day">
+              <span>T</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day">
+              <span>F</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day muted">
+              <span>S</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+            <div class="day muted">
+              <span>S</span>
+              <div class="day-bar"><div class="day-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <div class="pill">Juz 29 · 52%</div>
+        <div class="pill">Surah Al-Mulk</div>
+        <div class="pill">Accountability on</div>
+      </div>
+
+      <p class="footnote">
+        One place to log what you memorise and see your progress build up over time.
+      </p>
+
+      <div class="footer">
+        Made for anyone working on their Hifdh – whether you’re starting again or picking up where you left off.
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
